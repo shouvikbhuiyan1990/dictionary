@@ -8,7 +8,14 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var fs = require('fs');
+
+
+
+
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +30,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.post('/dictionary/save',function(req,res){
+
+fs.writeFile('data/'+req.body.name+'.html', req.body.content, function (err) {
+        if (err) throw err;
+        console.log('It\'s saved! in same location.');
+    });
+})
 
 app.use('/', routes);
 app.use('/users', users);

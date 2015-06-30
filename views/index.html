@@ -8,8 +8,9 @@
 <body>
 	<div class="container" ng-app="dictionaryApp" ng-controller="dictionaryAppCtrl">
 		<form ng-submit="searchWord($event)">
-			<input type="text" placeHolder="search" ng-model="searchTxt"/>
+			<input type="text" placeHolder="search" ng-model="searchTxt" ng-change="deleteOldMean()"/>
 		</form>
+		<button class="btn btn-default" ng-click="saveData()">Save</button>
 		<div class="definitions">
 			<div class="meaning" ng-repeat-start="texts in meaning">{{texts.text}}</div>
 			<div class="attribution" ng-repeat-end>{{texts.attribution}}</div>

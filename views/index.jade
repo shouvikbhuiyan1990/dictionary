@@ -7,7 +7,8 @@ html
   body
     .container(ng-app='dictionaryApp', ng-controller='dictionaryAppCtrl')
       form(ng-submit='searchWord($event)')
-        input(type='text', placeholder='search', ng-model='searchTxt')
+        input(type='text', placeholder='search', ng-model='searchTxt', ng-change='deleteOldMean()')
+      button.btn.btn-default(ng-click='saveData()') Save
       .definitions
         .meaning(ng-repeat-start='texts in meaning') {{texts.text}}
         .attribution(ng-repeat-end='') {{texts.attribution}}
