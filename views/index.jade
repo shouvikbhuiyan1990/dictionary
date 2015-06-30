@@ -1,5 +1,16 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+html
+  head
+    title Search a Word
+    link(rel='stylesheet', type='text/css', href='css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='css/reset.css')
+    link(rel='stylesheet', type='text/css', href='css/main.css')
+  body
+    .container(ng-app='dictionaryApp', ng-controller='dictionaryAppCtrl')
+      form(ng-submit='searchWord($event)')
+        input(type='text', placeholder='search', ng-model='searchTxt')
+      .definitions
+        .meaning(ng-repeat-start='texts in meaning') {{texts.text}}
+        .attribution(ng-repeat-end='') {{texts.attribution}}
+    script(type='text/javascript', src='javascripts/angular.min.js')
+    script(type='text/javascript', src='javascripts/jquery.min.js')
+    script(type='text/javascript', src='javascripts/main.js')

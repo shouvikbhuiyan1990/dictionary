@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Search a Word</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div class="container" ng-app="dictionaryApp" ng-controller="dictionaryAppCtrl">
+		<form ng-submit="searchWord($event)">
+			<input type="text" placeHolder="search" ng-model="searchTxt"/>
+		</form>
+		<div class="definitions">
+			<div class="meaning" ng-repeat-start="texts in meaning">{{texts.text}}</div>
+			<div class="attribution" ng-repeat-end>{{texts.attribution}}</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="javascripts/angular.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/main.js"></script>
+</body>
+</html>
